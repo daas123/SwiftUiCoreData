@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SwiftUiCoreDataApp: App {
+    
+    let presistentContainer = DataBaseManager.shared.presistentContainer
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(coreDm: DataBaseManager.shared).environment(\.managedObjectContext, presistentContainer.viewContext)
         }
     }
 }
